@@ -1,0 +1,50 @@
+graph TD
+    A[Input Interface Layer] -->|Receives Media| B[Media Type Identification and Parsing]
+    B -->|Text| C1[NLP Engine]
+    B -->|Image/Video| C2[Computer Vision Engine]
+    B -->|Audio| C3[Speech-to-Text Engine]
+
+    C1 -->|Extracts Context| D[Contextual Analysis and Source Basket Lookup]
+    C2 -->|Processes Visual Media| D
+    C3 -->|Transcribes Audio| D
+    
+    D -->|Cross-reference with trusted sources| E1[Wikipedia/News Sites]
+    D -->|Contextual Check| E2[Personal Contacts/Past Conversations]
+    D -->|Dynamic Data| E3[Social Media Propagation Patterns]
+
+    D -->|Sends to| F[AI-Powered Veracity Scoring]
+
+    F -->|Text-based Matching| G1[Language Models]
+    F -->|Image/Video Matching| G2[Deepfake Detection]
+    F -->|Audio Matching| G3[Speech Anomaly Detection]
+    F -->|Produces| H[Veracity Score]
+
+    H -->|If suspicious| I[User Feedback and Warning System]
+    H -->|If trusted| I[No Warning]
+    
+    I --> J[User Receives Alert]
+    I --> K[Detailed Explanation]
+
+    J -->|Feedback Provided| L[Learning and Feedback Mechanism]
+    L -->|Feedback Loops| F
+
+    I -->|Sends Alert| M1[WhatsApp]
+    I --> M2[Email]
+    I --> M3[Social Media]
+
+    subgraph Verification Sources
+      E1
+      E2
+      E3
+    end
+    
+    subgraph Media Processing
+      C1
+      C2
+      C3
+    end
+    
+    subgraph Feedback Loop
+      F
+      L
+    end
