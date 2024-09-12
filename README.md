@@ -2,29 +2,47 @@
 MemeticWarfareDefence is an open-source Python utility designed to intercept, analyze, and verify incoming media streams in real-time. The tool leverages AI to check the veracity of various types of media (text, online articles, videos, voice, etc.) by cross-referencing multiple reputable sources. Its purpose is to detect misinformation and alert users before they engage with or spread potentially harmful content.
 
 **Features**
+
 Multi-modal media analysis: Analyze text, images, videos, voice recordings, and more.
+
 Real-time veracity checking: Process media streams in real-time with minimal delay.
+
 Cross-reference with trusted sources: Verify information against a basket of sources like:
+
 Wikipedia
+
 Reputable news sites
+
 Personal contacts
+
 Prior conversations or context from the user
+
 Flexible input: Can process media from various channels such as:
+
 Inbound messages (e.g., WhatsApp, SMS)
+
 Shared/forwarded media
+
 Social media articles (e.g., Facebook, Twitter, LinkedIn)
+
 Online shopping sites
+
 Emails
 
 
 **Use Cases**
+
 Message filtering: Automatically check the veracity of shared/forwarded messages or articles.
+
 Social media: Validate posts or media from social media platforms before interacting with them.
+
 Email scanning: Alert users of suspicious content in emails, including phishing attempts.
+
 Voice/video analysis: Real-time verification of information in spoken content, such as podcasts or video calls.
 
 
 **Installation**
+
 Clone the repository:
 
 bash
@@ -43,6 +61,7 @@ pip install -r requirements.txt
 
 
 **Usage**
+
 Running the Utility:
 
 The utility can be run using Python to intercept media streams and analyze their veracity.
@@ -74,6 +93,7 @@ python memetic_defence.py --voice "path/to/voicefile.wav"
 
 
 **Roadmap**
+
 Source basket expansion: Continuously adding more reliable sources for verification.
 
 Performance optimization: Reducing processing times for real-time applications.
