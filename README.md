@@ -75,16 +75,26 @@ python memetic_defence.py --voice "path/to/voicefile.wav"
 
 **Roadmap**
 Source basket expansion: Continuously adding more reliable sources for verification.
+
 Performance optimization: Reducing processing times for real-time applications.
+
 User interface: Developing a user-friendly UI for easier interaction.
+
 Multi-language support: Expanding capabilities to handle media in multiple languages.
+
 Integration with messaging platforms: Direct support for WhatsApp, Facebook Messenger, and email clients.
-Contributing
+
+
+**Contributing**
 Contributions are welcome! Please submit a pull request or open an issue if you'd like to contribute to the development of MemeticWarfareDefence.
 
 **Steps to Contribute:**
 Fork the repository
+
 Create a new branch for your feature or bugfix
+
 Submit a pull request with a detailed explanation
-License
+
+**License**
+
 This project is licensed under the MIT License - see the LICENSE file for details.
