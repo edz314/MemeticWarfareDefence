@@ -1,23 +1,43 @@
 # src/app.py
 
 from src.ingestion.text_handler import TextHandler
-from src.parsing.text_parser import TextParser
+from src.ingestion.url_handler import URLHandler
+from src.ingestion.image_handler import ImageHandler
+from src.ingestion.video_handler import VideoHandler
+from src.ingestion.audio_handler import AudioHandler
 
-# Initialize the components
+# Initialize the handlers
 text_handler = TextHandler()
-text_parser = TextParser()
+url_handler = URLHandler()
+image_handler = ImageHandler()
+video_handler = VideoHandler()
+audio_handler = AudioHandler()
 
 def main():
-    # Simulate text input (could be from any source)
+    # Example text input
     text_input = "Apple announces the new iPhone 15 today at the event in Cupertino."
-    
-    # Handle and clean the text
     clean_text = text_handler.handle(text_input)
-    
-    # Parse the text for entities and keywords
-    parsed_text = text_parser.parse(clean_text)
-    
-    print("Parsed Entities and Keywords:", parsed_text)
+    print("Processed Text:", clean_text)
+
+    # Example URL input
+    url_input = "https://news.ycombinator.com/"
+    url_content = url_handler.handle(url_input)
+    print("Extracted URL Content:", url_content)
+
+    # Example image input
+    image_path = "/path/to/image.jpg"
+    processed_image = image_handler.handle(image_path)
+    print("Processed Image Shape:", processed_image.shape)
+
+    # Example video input
+    video_path = "/path/to/video.mp4"
+    video_frames = video_handler.handle(video_path)
+    print("Extracted Frames Count:", len(video_frames))
+
+    # Example audio input
+    audio_path = "/path/to/audio.wav"
+    transcribed_text = audio_handler.handle(audio_path)
+    print("Transcribed Audio:", transcribed_text)
 
 if __name__ == "__main__":
     main()
