@@ -12,6 +12,12 @@ from src.parsing.image_parser import ImageParser
 from src.parsing.video_parser import VideoParser
 from src.parsing.audio_parser import AudioParser
 
+from src.ingestion.text_handler import TextHandler
+from src.parsing.text_parser import TextParser
+from src.verification.fact_check import FactCheckEngine
+from src.verification.misinformation_detection import MisinformationDetector
+from src.verification.source_basket import SourceBasket
+
 # Initialize the handlers and parsers
 text_handler = TextHandler()
 url_handler = URLHandler()
@@ -24,6 +30,16 @@ url_parser = URLParser()
 image_parser = ImageParser()
 video_parser = VideoParser()
 audio_parser = AudioParser()
+
+text_handler = TextHandler()
+text_parser = TextParser()
+fact_check_engine = FactCheckEngine(api_key="your_api_key")
+misinformation_detector = MisinformationDetector()
+source_basket = SourceBasket()
+
+# Add some trusted sources to the basket
+source_basket.add_source("Reuters", "https://www.reuters.com/")
+source_basket.add_source("BBC", "https://www.bbc.com/")
 
 def main():
     # Example text input
@@ -56,5 +72,22 @@ def main():
     parsed_audio = audio_parser.parse(transcribed_text)
     print("Parsed Audio:", parsed_audio)
 
+    # Example text input
+    text_input = "Apple announces the new iPhone 15 today at the event in Cupertino."
+    clean_text = text_handler.handle(text_input)
+    parsed_text = text_parser.parse(clean_text)
+    print("Parsed Text:", parsed_text)
+
+    # Perform fact-checking
+    fact_check_result = fact_check_engine.check_fact(clean_text)
+    print("Fact-Check Results:", fact_check_result)
+
+    # Perform misinformation detection
+    misinformation_probability = misinformation_detector.detect(clean_text)
+    print("Misinformation Probability:", misinformation_probability)
+
+    # Verify with trusted sources
+    source_verification = source_basket.verify_with_sources(clean_text)
+    print("Source Verification:", source_verification)
 if __name__ == "__main__":
     main()
