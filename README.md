@@ -45,18 +45,12 @@ Voice/video analysis: Real-time verification of information in spoken content, s
 
 Clone the repository:
 
-bash
-Copy code
 git clone https://github.com/edz314/MemeticWarfareDefence.git
 Navigate to the project directory:
 
-bash
-Copy code
 cd MemeticWarfareDefence
 Install the required dependencies:
 
-bash
-Copy code
 pip install -r requirements.txt
 
 
@@ -66,8 +60,6 @@ Running the Utility:
 
 The utility can be run using Python to intercept media streams and analyze their veracity.
 
-bash
-Copy code
 python memetic_defence.py
 
 
@@ -82,13 +74,9 @@ Example Usage:
 
 Checking an article:
 
-bash
-Copy code
 python memetic_defence.py --url "https://example.com/article"
 Checking a voice recording:
 
-bash
-Copy code
 python memetic_defence.py --voice "path/to/voicefile.wav"
 
 
