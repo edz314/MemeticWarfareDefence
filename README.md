@@ -1,108 +1,77 @@
-**MemeticWarfareDefence**
-MemeticWarfareDefence is an open-source Python utility designed to intercept, analyze, and verify incoming media streams in real-time. The tool leverages AI to check the veracity of various types of media (text, online articles, videos, voice, etc.) by cross-referencing multiple reputable sources. Its purpose is to detect misinformation and alert users before they engage with or spread potentially harmful content.
+# MemeticWarfareDefence
 
-**Features**
+An experimental Python sandbox for thinking about adversarial information integrity.
 
-Multi-modal media analysis: Analyze text, images, videos, voice recordings, and more.
+## Status
 
-Real-time veracity checking: Process media streams in real-time with minimal delay.
+Early prototype. Personal research project. Not a production tool, not a
+finished product, and not making claims about what it can reliably detect. The
+commit history is me working through an idea in code rather than in prose.
 
-Cross-reference with trusted sources: Verify information against a basket of sources like:
+## What the project is exploring
 
-Wikipedia
+The premise is that individuals in 2026 are the endpoint of information
+ecosystems increasingly shaped by:
 
-Reputable news sites
+- coordinated inauthentic content, both state and commercial
+- synthetic multimodal media that defeats naïve perceptual checks
+- reputation laundering through citation graphs and cached pages
+- compression of source provenance in aggregated feeds
 
-Personal contacts
+The question this repo pokes at: what would a *personal* defensive layer look
+like — something that sits between incoming media (messages, shared articles,
+voice clips, social posts, emails) and the user's attention, and which
+surfaces provenance signals and contested claims before engagement rather
+than after?
 
-Prior conversations or context from the user
+"Memetic warfare defence" is deliberately strong language. The name reflects
+the framing, not a claim that the code operates at that scale.
 
-Flexible input: Can process media from various channels such as:
+## Current scope
 
-Inbound messages (e.g., WhatsApp, SMS)
+The repo contains scaffolding for:
 
-Shared/forwarded media
+- input adapters for text, URL, and audio streams
+- a source-registry abstraction for trusted reference material
+- a claim-extraction and cross-reference loop
+- structured output flagging provenance, confidence, and contested points
 
-Social media articles (e.g., Facebook, Twitter, LinkedIn)
+Multimodal handling, real-time stream processing, and messaging-channel
+integrations are referenced in the structure but are not implemented
+end-to-end. Treat the directory layout as an architecture sketch, not a
+shipped surface.
 
-Online shopping sites
+## Running it
 
-Emails
+Requires Python 3.10+.
 
+    git clone https://github.com/edz314/MemeticWarfareDefence.git
+    cd MemeticWarfareDefence
+    pip install -r requirements.txt
+    python memetic_defence.py --url "https://example.com/article"
 
-**Use Cases**
+The CLI accepts `--url` for articles, `--text` for raw strings, and `--voice`
+for an audio path. Output is JSON with per-claim provenance annotations.
+Behaviour under adversarial input is not validated.
 
-Message filtering: Automatically check the veracity of shared/forwarded messages or articles.
+## Honest limitations
 
-Social media: Validate posts or media from social media platforms before interacting with them.
+- "Veracity" is not a property the utility can determine. The tool can
+  surface disagreement between sources, highlight absent corroboration, and
+  flag synthetic-media indicators. It cannot tell you what is true.
+- Cross-referencing reputable sources does not defeat an adversary who has
+  already seeded those sources. The base-rate problem is real.
+- No robustness testing against prompt-injected or adversarially crafted
+  input.
+- Source selection is itself a political act. The trusted-source basket is
+  the bias you inherit.
 
-Email scanning: Alert users of suspicious content in emails, including phishing attempts.
+## Why it's public
 
-Voice/video analysis: Real-time verification of information in spoken content, such as podcasts or video calls.
+This repo exists so the ideas can be criticised in the open. If you think
+the framing is wrong, or that a particular detection approach is
+load-bearing in a way that won't hold up, raise an issue.
 
+## License
 
-**Installation**
-
-Clone the repository:
-
-git clone https://github.com/edz314/MemeticWarfareDefence.git
-Navigate to the project directory:
-
-cd MemeticWarfareDefence
-Install the required dependencies:
-
-pip install -r requirements.txt
-
-
-**Usage**
-
-Running the Utility:
-
-The utility can be run using Python to intercept media streams and analyze their veracity.
-
-python memetic_defence.py
-
-
-**Input Sources:**
-
-The utility supports multiple input formats, including:
-
-URLs to articles or media files
-Text inputs (inbound messages or social media content)
-Real-time voice or video streams (via microphone or other media inputs)
-Example Usage:
-
-Checking an article:
-
-python memetic_defence.py --url "https://example.com/article"
-Checking a voice recording:
-
-python memetic_defence.py --voice "path/to/voicefile.wav"
-
-
-**Roadmap**
-
-Source basket expansion: Continuously adding more reliable sources for verification.
-
-Performance optimization: Reducing processing times for real-time applications.
-
-User interface: Developing a user-friendly UI for easier interaction.
-
-Multi-language support: Expanding capabilities to handle media in multiple languages.
-
-Integration with messaging platforms: Direct support for WhatsApp, Facebook Messenger, and email clients.
-
-
-**Contributing**
-Contributions are welcome! Please submit a pull request or open an issue if you'd like to contribute to the development of MemeticWarfareDefence.
-
-**Steps to Contribute:**
-Fork the repository
-
-Create a new branch for your feature or bugfix
-
-Submit a pull request with a detailed explanation
-
-**License**
-
-This project is licensed under the GNU GENERAL PUBLIC LICENSE- Version 3, 29 June 2007 - see the LICENSE file for details.
+See `LICENSE`.
